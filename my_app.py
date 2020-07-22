@@ -50,6 +50,7 @@ def fashion():
   
   return str(ans)
 @app.route('/audio/hello.mp3',methods=['GET'])
+@nocache
 def audio():
   path='hello.mp3'
   return send_file(path,mimetype="audio/mpeg", as_attachment=True, attachment_filename="hello.mp3")
