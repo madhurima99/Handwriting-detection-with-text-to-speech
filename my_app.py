@@ -10,7 +10,10 @@ from flask import send_file
 from flask import make_response
 from functools import wraps, update_wrapper
 from datetime import datetime
+
 app = flask.Flask(__name__)
+app.config["DEBUG"] = True
+
 def nocache(view):
     @wraps(view)
     def no_cache(*args, **kwargs):
@@ -60,4 +63,6 @@ def convertImage(imgData):
     imgstr = re.search(b'base64,(.*)', imgData).group(1)
     with open('output.png', 'wb') as output:
         output.write(base64.decodebytes(imgstr))
-
+        
+if __name__ == '__main__':
+    app.run()
