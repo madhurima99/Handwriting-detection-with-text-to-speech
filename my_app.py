@@ -25,7 +25,6 @@ def nocache(view):
         return response
         
     return update_wrapper(no_cache, view)
-
 @app.route('/show_mnist')
 def show_fashion():
   return flask.render_template('/index.html')
@@ -51,7 +50,6 @@ def fashion():
   ans=target_names[result[0]]
   speech=gTTS(ans) #converting text to speech
   speech.save("hello.mp3")
-  
   return str(ans)
 @app.route('/audio/hello.mp3',methods=['GET'])
 @nocache
